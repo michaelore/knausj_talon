@@ -84,7 +84,7 @@ ctx.lists["self.modifier"] = {
     "alt": "alt",
     # "command": "cmd",
     "control": "ctrl",  #'troll':   'ctrl',
-    "option": "alt",
+    #"option": "alt",
     "shift": "shift",  #'sky':     'shift',
     "super": "super",
 }
