@@ -82,7 +82,7 @@ def key(m) -> str:
 ctx = Context()
 ctx.lists["self.modifier"] = {
     "alt": "alt",
-    "command": "cmd",
+    # "command": "cmd",
     "control": "ctrl",  #'troll':   'ctrl',
     "option": "alt",
     "shift": "shift",  #'sky':     'shift',
