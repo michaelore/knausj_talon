@@ -169,20 +169,16 @@ simple_keys = [
     "enter",
     "escape",
     "home",
-    "insert",
+    #"insert",
     "pagedown",
     "pageup",
     "space",
     "tab",
+    "backspace",
+    "delete",
 ]
 
-alternate_keys = {
-    "delete": "backspace",
-    "forward delete": "delete",
-    #'junk': 'backspace',
-}
 keys = {k: k for k in simple_keys}
-keys.update(alternate_keys)
 ctx.lists["self.special"] = keys
 ctx.lists["self.function"] = {
     f"F {default_f_digits[i]}": f"f{i + 1}" for i in range(12)
