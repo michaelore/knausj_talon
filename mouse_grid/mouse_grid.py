@@ -3,13 +3,13 @@
 from talon import Module, Context, app, canvas, screen, ui, ctrl, cron
 from talon.skia import Shader, Color, Rect
 from talon_plugins import eye_mouse, eye_zoom_mouse
+from typing import Union
 
 import math, time
 
 import typing
 
 mod = Module()
-
 shimmer_effect_enabled = mod.setting(
     "grid_shimmer_effect_enabled",
     type=bool,
@@ -405,7 +405,6 @@ mg = MouseSnapNine()
 class GridActions:
     def grid_activate():
         """Brings up a/the grid (mouse grid or otherwise)"""
-
         if mg.start():
             ctx.tags = ["user.mouse_grid_showing"]
 
@@ -429,10 +428,10 @@ class GridActions:
         for d in digit_list:
             GridActions.grid_narrow(int(d))
 
-    def grid_narrow(digit: int):
+    def grid_narrow(digit: Union[int, str]):
         """Choose a field of the grid and narrow the selection down"""
         # print("narrow one", repr(digit))
-        mg.narrow(digit)
+        mg.narrow(int(digit))
 
     def grid_go_back():
         """Sets the grid state back to what it was before the last command"""
@@ -453,4 +452,4 @@ def check_shimmer_setting_at_startup():
         mg.stop()
 
 
-cron.after("100ms", check_shimmer_setting_at_startup)
+app.register("launch", check_shimmer_setting_at_startup)
